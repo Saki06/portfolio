@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.b1cb4a5d.css",
+    "main.js": "/portfolio/static/js/main.3fa57469.js",
+    "static/media/photography.png": "/portfolio/static/media/photography.39989dd29a80d3822510.png",
+    "static/media/Sakiththiyan.png": "/portfolio/static/media/Sakiththiyan.f610733382abf3719e5c.png",
+    "static/media/Portfolio.png": "/portfolio/static/media/Portfolio.a96337581038235a583a.png",
+    "static/media/Sakiththiyan-CV.pdf": "/portfolio/static/media/Sakiththiyan-CV.e5fb8a2678d52232c0ac.pdf",
+    "index.html": "/portfolio/index.html",
+    "main.b1cb4a5d.css.map": "/portfolio/static/css/main.b1cb4a5d.css.map",
+    "main.3fa57469.js.map": "/portfolio/static/js/main.3fa57469.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1cb4a5d.css",
+    "static/js/main.3fa57469.js"
+  ]
+}
