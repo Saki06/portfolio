@@ -1,0 +1,31 @@
+.experience__container {
+    display: flex;
+    justify-content: center;
+}
+
+.experience__content {
+    padding: 3rem;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 2rem;
+}
+
+@media screen and (max-width: 1024px){
+    .experience__container {
+        width: var(--container-width-md);
+    }
+    
+    .experience__content {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .experience__container {
+        width: var(--container-width-sm);
+    }
+    
+    .experience__content {
+        padding: 1.5rem;
+    }
+}
