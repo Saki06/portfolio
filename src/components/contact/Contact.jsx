@@ -7,28 +7,35 @@ import { FaWhatsapp } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [message, setMessage] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage(true);
+    setIsLoading(true);
+    setMessage('');
+
     emailjs
       .sendForm(
-        'service_k2qawqh',
-        'template_c6rkpn6',
+        'service_j68baqv',
+        'template_8pwsd0j',
         formRef.current,
-        'X7K7ebhIeOy3YwHki'
+        'j_InN41l6tjfsbDF5'
       )
       .then(
         (result) => {
-          console.log(result.text);
+          console.log('✅ Email sent successfully:', result.text);
+          setMessage('✅ Message sent successfully! I\'ll reply soon.');
+          setIsLoading(false);
+          formRef.current.reset();
         },
         (error) => {
-          console.log(error.text);
+          console.error('❌ Email sending failed:', error);
+          setMessage('❌ Failed to send message. Please contact me directly via email/WhatsApp.');
+          setIsLoading(false);
         }
       );
-
-    e.target.reset();
   };
   return (
     <section id="contact">
@@ -57,7 +64,7 @@ const Contact = () => {
             required
           />
           <input
-            type="text"
+            type="email"
             placeholder="Your Email"
             name="user_email"
             required
@@ -68,10 +75,10 @@ const Contact = () => {
             name="message"
             required
           ></textarea>
-          <button type="submit" className="btn btn-primary">
-            Send Message
+          <button type="submit" className="btn btn-primary" disabled={isLoading}>
+            {isLoading ? 'Sending...' : 'Send Message'}
           </button>
-          {message && <span>Thanks, I'll reply ASAP :)</span>}
+          {message && <span className="contact-message">{message}</span>}
         </form>
       </div>
     </section>
