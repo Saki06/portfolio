@@ -70,8 +70,38 @@ input:focus, textarea:focus {
 }
 
 form button {
-    margin-top: 1rem;
     cursor: pointer;
+}
+
+/* Dual button layout */
+.contact__form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.contact__form-buttons .btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* WhatsApp button */
+.contact__whatsapp-btn {
+    background: #25D366 !important;
+    color: #fff !important;
+    border: 1px solid #25D366 !important;
+}
+
+.contact__whatsapp-btn:hover {
+    background: #128C7E !important;
+    border-color: #128C7E !important;
+    color: #fff !important;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    transform: translateY(-2px);
 }
 
 .contact-message {

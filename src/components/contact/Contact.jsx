@@ -6,12 +6,24 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
+const WHATSAPP_NUMBER = '94770167675';
+
 const Contact = () => {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef();
   
-  const handleSubmit = (e) => {
+  // Get form data helper
+  const getFormData = () => {
+    const form = formRef.current;
+    const name = form.user_name.value.trim();
+    const email = form.user_email.value.trim();
+    const msg = form.message.value.trim();
+    return { name, email, msg };
+  };
+
+  // Send via EmailJS
+  const handleEmailSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setMessage('');
@@ -37,6 +49,36 @@ const Contact = () => {
         }
       );
   };
+
+  // Send via WhatsApp
+  const handleWhatsAppSend = () => {
+    const { name, email, msg } = getFormData();
+
+    // Validate form fields
+    if (!name || !email || !msg) {
+      setMessage('⚠️ Please fill in all fields before sending.');
+      return;
+    }
+
+    // Build the WhatsApp message
+    const whatsappText = 
+`Hi Sakiththiyan! 👋
+
+*Name:* ${name}
+*Email:* ${email}
+
+*Message:*
+${msg}`;
+
+    // Open WhatsApp with pre-filled message
+    const encodedText = encodeURIComponent(whatsappText);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
+    window.open(whatsappUrl, '_blank');
+
+    setMessage('✅ Opening WhatsApp...');
+    formRef.current.reset();
+  };
+
   return (
     <section id="contact">
       <h5>Get In Touch</h5>
@@ -56,7 +98,7 @@ const Contact = () => {
             <a href="https://wa.me/94770167675" target="_blank" rel="noreferrer">Send a message</a>
           </article>
         </div>
-        <form ref={formRef} onSubmit={handleSubmit} className="glass">
+        <form ref={formRef} onSubmit={handleEmailSubmit} className="glass">
           <input
             type="text"
             placeholder="Your Full Name"
@@ -75,9 +117,16 @@ const Contact = () => {
             name="message"
             required
           ></textarea>
-          <button type="submit" className="btn btn-primary" disabled={isLoading}>
-            {isLoading ? 'Sending...' : 'Send Message'}
-          </button>
+          <div className="contact__form-buttons">
+            <button type="submit" className="btn btn-primary" disabled={isLoading}>
+              <MdOutlineEmail />
+              {isLoading ? 'Sending...' : 'Send Email'}
+            </button>
+            <button type="button" className="btn contact__whatsapp-btn" onClick={handleWhatsAppSend} disabled={isLoading}>
+              <FaWhatsapp />
+              Send WhatsApp
+            </button>
+          </div>
           {message && <span className="contact-message">{message}</span>}
         </form>
       </div>
