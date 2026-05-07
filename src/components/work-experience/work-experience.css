@@ -1,0 +1,340 @@
+/* ============================================
+   WORK EXPERIENCE — Premium Timeline Layout
+   ============================================ */
+
+.work__timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ── Vertical Center Line ── */
+.timeline__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-primary-variant) 10%,
+    var(--color-primary) 50%,
+    var(--color-primary-variant) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+/* ── Timeline Item Container ── */
+.timeline__item {
+  position: relative;
+  width: 50%;
+  padding: 0 2.5rem;
+  margin-bottom: 3rem;
+  animation: fadeSlideIn 0.6s ease-out both;
+}
+
+.timeline__item--left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline__item--right {
+  left: 50%;
+  text-align: left;
+}
+
+/* Staggered entry animation */
+.timeline__item:nth-child(1) { animation-delay: 0.1s; }
+.timeline__item:nth-child(2) { animation-delay: 0.3s; }
+.timeline__item:nth-child(3) { animation-delay: 0.5s; }
+.timeline__item:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Center Dot ── */
+.timeline__dot {
+  position: absolute;
+  top: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  z-index: 2;
+  box-shadow: 0 0 15px var(--color-primary-variant),
+              0 0 30px rgba(0, 242, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.timeline__item--left .timeline__dot {
+  right: -1.5rem;
+}
+
+.timeline__item--right .timeline__dot {
+  left: -1.5rem;
+}
+
+.timeline__item:hover .timeline__dot {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  box-shadow: 0 0 20px var(--color-primary),
+              0 0 40px rgba(0, 242, 255, 0.3);
+  transform: scale(1.15);
+}
+
+/* ── Timeline Card ── */
+.timeline__card {
+  position: relative;
+  padding: 1.8rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.timeline__card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 242, 255, 0.12),
+              0 0 0 1px var(--color-primary-variant);
+}
+
+/* Gradient accent bar at top */
+.timeline__card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.timeline__card:hover .timeline__card-accent {
+  opacity: 1;
+  height: 4px;
+}
+
+/* ── Card Header ── */
+.timeline__card-header {
+  margin-bottom: 1.2rem;
+}
+
+.timeline__role {
+  font-size: 1.3rem;
+  color: var(--color-white);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.timeline__company {
+  font-size: 1rem;
+  font-weight: 500;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.8rem;
+}
+
+.timeline__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.timeline__item--left .timeline__meta {
+  justify-content: flex-end;
+}
+
+.timeline__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--color-light);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem 0.7rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeline__meta-item svg {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+}
+
+/* ── Highlights ── */
+.timeline__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.timeline__highlight {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s ease;
+}
+
+.timeline__item--left .timeline__highlight {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.timeline__highlight:hover {
+  background: rgba(0, 242, 255, 0.04);
+  border-color: rgba(0, 242, 255, 0.1);
+}
+
+.timeline__highlight-icon {
+  min-width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: var(--color-primary-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  margin-top: 0.15rem;
+  transition: all 0.3s ease;
+}
+
+.timeline__highlight:hover .timeline__highlight-icon {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+.timeline__highlight-content strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-white);
+  margin-bottom: 0.2rem;
+}
+
+.timeline__highlight-content p {
+  font-size: 0.82rem;
+  color: var(--color-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE — Tablet
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .work__timeline {
+    max-width: 700px;
+  }
+
+  .timeline__card {
+    padding: 1.5rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Mobile (single-column)
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .timeline__line {
+    left: 1.5rem;
+  }
+
+  .timeline__item,
+  .timeline__item--left,
+  .timeline__item--right {
+    width: 100%;
+    left: 0;
+    padding-left: 4.5rem;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .timeline__item--left .timeline__dot,
+  .timeline__item--right .timeline__dot {
+    left: 0;
+    right: auto;
+  }
+
+  .timeline__item--left .timeline__meta {
+    justify-content: flex-start;
+  }
+
+  .timeline__item--left .timeline__highlight {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .timeline__role {
+    font-size: 1.1rem;
+  }
+
+  .timeline__company {
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .timeline__line {
+    left: 1.2rem;
+  }
+
+  .timeline__item,
+  .timeline__item--left,
+  .timeline__item--right {
+    padding-left: 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline__dot {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 0.9rem;
+  }
+
+  .timeline__item--left .timeline__dot,
+  .timeline__item--right .timeline__dot {
+    left: 0;
+  }
+
+  .timeline__card {
+    padding: 1.2rem;
+  }
+
+  .timeline__meta {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .timeline__highlight {
+    padding: 0.6rem;
+  }
+}

@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import Intro from './components/intro/Intro';
 import Portfolio from './components/portfolio/Portfolio';
 import Professional from './components/professional/Professional';
+import WorkExperience from './components/work-experience/WorkExperience';
 import Topbar from './components/topbar/Topbar';
 import AIAssistant from './components/ai-assistant/AIAssistant';
 
@@ -18,6 +19,7 @@ const App = () => {
       <Intro />
       <Experience />
       <Professional />
+      <WorkExperience />
       <Portfolio />
       <Contact />
       <Footer />
