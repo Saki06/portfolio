@@ -62,17 +62,18 @@ const Contact = () => {
 
     // Build the WhatsApp message
     const whatsappText = 
-`Hello Sakiththiyan! 🌟
+`✨ *NEW PORTFOLIO INQUIRY* ✨
 
-I'm reaching out from your portfolio website.
+Hi *Sakiththiyan* 👋
 
-*👤 Name:* ${name}
+You've got a message from your portfolio website!
 
+👤 *From:* ${name}
 
-*💬 Message:*
+💬 *Message:*
 ${msg}
 
-Looking forward to connecting!`;
+🚀 _Looking forward to connecting!_`;
 
     // Open WhatsApp with pre-filled message
     const encodedText = encodeURIComponent(whatsappText);
